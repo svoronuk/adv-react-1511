@@ -12,3 +12,5 @@ ReactDOM.render(<Provider store={store}>
         <App />
     </ConnectedRouter>
 </Provider>, document.getElementById('root'))
+
+let i = 1
