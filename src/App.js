@@ -1,14 +1,15 @@
 import React, { Component, Fragment } from 'react'
 import { NavLink, Route } from 'react-router-dom'
+import {connect} from 'react-redux'
 import AdminPage from './components/routes/admin'
 import AuthPage from './components/routes/auth'
 
-export default class App extends Component {
+class App extends Component {
     render() {
         return (
             <Fragment>
                 <div>
-                    <NavLink to = "/admin" activeStyle={{ color: 'red' }}>Admin</NavLink>
+                    {this.props.isLogged && <NavLink to = "/admin" activeStyle={{ color: 'red' }}>Admin</NavLink>}
                 </div>
                 <div>
                     <NavLink to = "/auth/sign-in" activeStyle={{ color: 'red' }}>Sign In</NavLink>
@@ -24,3 +25,5 @@ export default class App extends Component {
         )
     }
 }
+
+export default connect(state  => ({isLogged: !!state.auth.get('user')}), null)(App)
