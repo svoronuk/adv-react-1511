@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { NavLink, Route } from 'react-router-dom'
+import { NavLink, Route, withRouter } from 'react-router-dom'
 import {connect} from 'react-redux'
 import AdminPage from './components/routes/admin'
 import AuthPage from './components/routes/auth'
@@ -26,4 +26,4 @@ class App extends Component {
     }
 }
 
-export default connect(state  => ({isLogged: !!state.auth.get('user')}), null)(App)
+export default withRouter(connect(state  => ({isLogged: !!state.auth.get('user')}), null)(App))
